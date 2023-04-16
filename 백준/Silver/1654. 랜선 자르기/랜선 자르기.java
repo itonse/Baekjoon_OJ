@@ -1,48 +1,37 @@
-import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-	
-	private static long binary_search(long arr[], int N, long max) {
-		long half = 0;
-		long min = 1;
 
-		while(min <= max) {
-			half = (min + max)/2;
-			long count = 0;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int K = sc.nextInt();
+        int N = sc.nextInt();
 
-			for(long num : arr) {
-				count += num / half;
-			}
+        int[] arr = new int[K];
+        for (int i = 0; i < K; i++) {
+            arr[i] = sc.nextInt();
+        }
 
-		
-			if(count < N) {
-				max = half-1;
-			} else {
-				min = half+1;
-			}
-		}
-		return (max+min)/2;
-	}
+        long left = 1;
+        long right = Arrays.stream(arr).max().getAsInt();
+        long mid = 0;
+        
+        while (left <= right) {
+            mid = left + (right - left) / 2;
+            
+            long cnt = 0;
+            for (int i = 0; i < arr.length; i++) {
+                cnt += arr[i] / mid;
+            }
+            if (cnt < N) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
 
-	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-
-		int K = Integer.parseInt(st.nextToken());
-		int N = Integer.parseInt(st.nextToken());
-		long result = 0;
-		long max = 0;
-
-		long [] arr= new long[K];
-		for(int i=0; i<K; i++) {
-			arr[i] = Integer.parseInt(br.readLine());
-			max = Math.max(max, arr[i]);
-		}
-
-		result = binary_search(arr, N, max);
-
-		System.out.println(result);
-		br.close();
-	}
+        System.out.println(right);
+        sc.close();
+    }
 }
