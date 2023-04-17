@@ -34,3 +34,5 @@
 
  <p>각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.</p>
 
+![KakaoTalk_20230417_230159086](https://user-images.githubusercontent.com/76129297/232511159-23650cff-b07c-4e5b-8181-cc66b0798519.jpg)
+
