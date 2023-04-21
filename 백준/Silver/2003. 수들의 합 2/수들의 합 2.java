@@ -1,37 +1,38 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         int N = sc.nextInt();
         int M = sc.nextInt();
-        int[] arr = new int[N];
+        int[] A = new int[N];
+        int answer = 0;
 
-        for(int i = 0; i < N; i++) {
-            arr[i] = sc.nextInt();
+        for (int i = 0; i < N; i++) {
+            A[i] = sc.nextInt();
         }
 
-        int cnt = 0;
         int start = 0;
         int end = 0;
         int sum = 0;
 
-        while(true) {
-            if(sum >= M) {
-                sum -= arr[start++];
-            } else if (end >= arr.length) {
+        while (true) {
+            if (sum >= M) {
+                sum -= A[start++];
+            } else if (end >= A.length) {
                 break;
             } else {
-                sum += arr[end++];
+                sum += A[end++];
             }
-            
-            if(sum == M) {
-                cnt++;
+
+            if (sum == M) {
+                answer++;
             }
         }
 
-        System.out.println(cnt);
+        System.out.println(answer);
         sc.close();
     }
 }
